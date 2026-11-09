@@ -46,8 +46,8 @@ model by omission.
 | Build that follows an existing template or sibling | sonnet | medium |
 | Run a script, crawl or test suite and report back | sonnet | low |
 | Browser form-filling and web setup | sonnet | low |
-| Routine code review, implementation plan | sonnet | medium |
-| First-of-a-kind build, hard debugging, architecture | main session; opus only if it must be delegated | default |
+| Routine code review | sonnet | medium |
+| First-of-a-kind build, new anti-bot work, hard debugging, architecture, implementation plans | main session; opus only if it must be delegated | default |
 | Top-tier model above opus | only when the user asks in that message | n/a |
 
 1. **Small lookups stay inline.** About three tool calls or fewer: do it
@@ -66,6 +66,11 @@ model by omission.
    references, with a word limit.
 7. **At most three agents in parallel** without asking the user first.
 8. **Skills and plugins that spawn agents follow the same table.**
+9. **The user's request overrides this table.** If the user asks for an
+   agent, start one. If they name a model, use it. If not, pick from the
+   table; if no row fits, use the closest row or the session model,
+   whichever is cheaper. Never pick a model above the session model unless
+   the user names it.
 <!-- END subagent-model-baseline -->
 
 ## Safety net
